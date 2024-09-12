@@ -1,0 +1,87 @@
+﻿<Page
+    x:Class="LinkShortener.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <SplitView x:Name="MainSplitView" PanePlacement="Right" OpenPaneLength="300" DisplayMode="Overlay">
+        <SplitView.Pane>
+            <StackPanel>
+                <TextBlock HorizontalAlignment="Left" Text="LinkShortener by Olek47" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,10,0,0" Style="{ThemeResource TitleTextBlockStyle}"/>
+                <TextBlock HorizontalAlignment="Left" Text="App by Kierownik223" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,0,0,0" Style="{ThemeResource TitleTextBlockStyle}"/>
+                <TextBlock x:Name="AppVersionLabel" HorizontalAlignment="Left" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,10,0,0"/>
+                <TextBlock x:Name="ServerVersionLabel" HorizontalAlignment="Left" Text="Server version: N/A" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,0,0,0"/>
+                <Button x:Name="ChangeServerUrlButton" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,10,10,0" MaxWidth="350" Click="ChangeServerUrlButton_Click" FontWeight="Bold" Padding="10" >
+                    <Button.Foreground>
+                        <SolidColorBrush Color="{ThemeResource SystemColorWindowColor}"/>
+                    </Button.Foreground>
+                    <Button.Background>
+                        <SolidColorBrush Color="{ThemeResource SystemAccentColor}"/>
+                    </Button.Background>
+                    <StackPanel Orientation="Horizontal">
+                        <SymbolIcon Symbol="Setting"/>
+                        <TextBlock Text="Change server URL" TextWrapping="Wrap" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </SplitView.Pane>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Pivot x:Name="MainPivot" Title="LinkShortener" Grid.Row="0">
+                <PivotItem Header="Shorten URL">
+                    <StackPanel>
+                        <TextBox x:Name="TextURL" Text="" Margin="10,10,10,0" PlaceholderText="Enter your URL here" FontFamily="Segoe UI" MaxLength="255" InputScope="Url" Height="32" VerticalAlignment="Top" MaxWidth="350" HorizontalAlignment="Stretch"/>
+                        <Button x:Name="ButtonShorten" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,10,10,0" Click="ButtonShorten_Click" MaxWidth="350" Padding="10" >
+                            <Button.Foreground>
+                                <SolidColorBrush Color="{ThemeResource SystemColorWindowColor}"/>
+                            </Button.Foreground>
+                            <Button.Background>
+                                <SolidColorBrush Color="{ThemeResource SystemAccentColor}"/>
+                            </Button.Background>
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon Symbol="Link"/>
+                                <TextBlock Text="Shorten URL" TextWrapping="Wrap" Margin="5,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                        <TextBlock x:Name="LinkCountLabel" HorizontalAlignment="Center" Text="Links in database: N/A" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,10,0,0"/>
+                        <TextBlock x:Name="TotalClicksLabel" HorizontalAlignment="Center" Text="Total clicks: N/A" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,0,0,0"/>
+                        <TextBlock x:Name="ResultLabel" HorizontalAlignment="Center" Text=" " TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,10,0,0" TextAlignment="Center" Tapped="ResultLabel_Tapped"/>
+                    </StackPanel>
+                </PivotItem>
+                <PivotItem Header="Check URL">
+                    <StackPanel>
+                        <TextBox x:Name="TextCheckURL" Text="" Margin="10,10,10,0" PlaceholderText="Enter your short URL here" FontFamily="Segoe UI" MaxLength="255" InputScope="Url" VerticalAlignment="Top" MaxWidth="350" HorizontalAlignment="Stretch"/>
+                        <Button x:Name="ButtonCheckUrl" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,10,10,0" Click="ButtonCheckUrl_Click" MaxWidth="350" Padding="10" FontWeight="Bold" >
+                            <Button.Foreground>
+                                <SolidColorBrush Color="{ThemeResource SystemColorWindowColor}"/>
+                            </Button.Foreground>
+                            <Button.Background>
+                                <SolidColorBrush Color="{ThemeResource SystemAccentColor}"/>
+                            </Button.Background>
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon Symbol="Find"/>
+                                <TextBlock Text="Check URL" TextWrapping="Wrap" Margin="5,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                        <TextBlock x:Name="CheckResultLabel" HorizontalAlignment="Center" Text=" " TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,10,0,0" TextAlignment="Center" Tapped="ResultLabel_Tapped"/>
+                    </StackPanel>
+                </PivotItem>
+            </Pivot>
+            <CommandBar Grid.Row="1">
+                <CommandBar.SecondaryCommands>
+                    <!--<AppBarButton Icon="Setting" Label="Settings"/>-->
+                    <AppBarButton x:Name="AboutButton" Icon="Help" Label="About" Click="AboutButton_Click"/>
+                </CommandBar.SecondaryCommands>
+                <AppBarButton x:Name="ShareButton" Label="Share URL" Click="ShareButton_Click" Icon="Send"/>
+                <AppBarButton x:Name="RefreshStatsButton" Icon="Refresh" Label="Refresh stats" Click="RefreshStatsButton_Click"/>
+            </CommandBar>
+
+        </Grid>
+    </SplitView>
+</Page>
