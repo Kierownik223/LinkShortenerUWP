@@ -27,7 +27,6 @@ namespace LinkShortener
             }
             RefreshStats();
             DisplayAppVersion();
-            //DisplayServerVersion();
         }
 
         private async void RefreshStats()
@@ -68,28 +67,7 @@ namespace LinkShortener
             string appVersion = $"{version.Major}.{version.Minor}.{version.Build}";
             AppVersionLabel.Text = $"App Version: {appVersion}";
         }
-
-        //private async void DisplayServerVersion()
-        //{
-        //    try
-        //    {
-        //        using (HttpClient client = new HttpClient())
-        //        {
-        //            HttpResponseMessage response = await client.GetAsync(apiUrl + "/version");
-
-        //            string resultJson = await response.Content.ReadAsStringAsync();
-        //            JObject apiResponse = JObject.Parse(resultJson);
-        //            string serverVersion = apiResponse.Value<string>("version");
-
-        //            ServerVersionLabel.Text = $"Server version: {serverVersion}";
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-        //        ServerVersionLabel.Text = "Server version: N/A";
-        //    }
-        //}
-
+        
         private async void ButtonShorten_Click(object sender, RoutedEventArgs e)
         {
             string url = TextURL.Text;
@@ -252,7 +230,6 @@ namespace LinkShortener
                 ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
                 localSettings.Values["apiURL"] = apiUrl;
                 RefreshStats();
-                //DisplayServerVersion();
             }
         }
         
