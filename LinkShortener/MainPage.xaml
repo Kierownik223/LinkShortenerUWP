@@ -4,8 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
+    <Page.Background>
+        <SolidColorBrush Color="{ThemeResource SystemColorWindowColor}"/>
+    </Page.Background>
     <SplitView x:Name="MainSplitView" PanePlacement="Right" OpenPaneLength="300" DisplayMode="Overlay">
         <SplitView.Pane>
             <StackPanel>
@@ -22,7 +24,7 @@
                     </Button.Background>
                     <StackPanel Orientation="Horizontal">
                         <SymbolIcon Symbol="Setting"/>
-                        <TextBlock Text="Change server URL" TextWrapping="Wrap" Margin="5,0,0,0"/>
+                        <TextBlock Text="Change server URL" TextWrapping="Wrap" Margin="5,0,0,0" FontWeight="Normal"/>
                     </StackPanel>
                 </Button>
             </StackPanel>
@@ -46,7 +48,7 @@
                             </Button.Background>
                             <StackPanel Orientation="Horizontal">
                                 <SymbolIcon Symbol="Link"/>
-                                <TextBlock Text="Shorten URL" TextWrapping="Wrap" Margin="5,0,0,0"/>
+                                <TextBlock Text="Shorten URL" TextWrapping="Wrap" Margin="5,0,0,0" FontWeight="Normal"/>
                             </StackPanel>
                         </Button>
                         <TextBlock x:Name="LinkCountLabel" HorizontalAlignment="Center" Text="Links in database: N/A" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,10,0,0"/>
@@ -57,7 +59,7 @@
                 <PivotItem Header="Check URL">
                     <StackPanel>
                         <TextBox x:Name="TextCheckURL" Text="" Margin="10,10,10,0" PlaceholderText="Enter your short URL here" FontFamily="Segoe UI" MaxLength="255" InputScope="Url" VerticalAlignment="Top" MaxWidth="350" HorizontalAlignment="Stretch"/>
-                        <Button x:Name="ButtonCheckUrl" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,10,10,0" Click="ButtonCheckUrl_Click" MaxWidth="350" Padding="10" FontWeight="Bold" >
+                        <Button x:Name="ButtonCheckUrl" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,10,10,0" Click="ButtonCheckUrl_Click" MaxWidth="350" Padding="10" FontWeight="Bold" FontFamily="Segoe UI" >
                             <Button.Foreground>
                                 <SolidColorBrush Color="{ThemeResource SystemColorWindowColor}"/>
                             </Button.Foreground>
@@ -66,7 +68,7 @@
                             </Button.Background>
                             <StackPanel Orientation="Horizontal">
                                 <SymbolIcon Symbol="Find"/>
-                                <TextBlock Text="Check URL" TextWrapping="Wrap" Margin="5,0,0,0"/>
+                                <TextBlock Text="Check URL" TextWrapping="Wrap" Margin="5,0,0,0" FontWeight="Normal" FontFamily="Segoe UI"/>
                             </StackPanel>
                         </Button>
                         <TextBlock x:Name="CheckResultLabel" HorizontalAlignment="Center" Text=" " TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,10,0,0" TextAlignment="Center" Tapped="ResultLabel_Tapped"/>
@@ -74,11 +76,8 @@
                 </PivotItem>
             </Pivot>
             <CommandBar Grid.Row="1">
-                <CommandBar.SecondaryCommands>
-                    <!--<AppBarButton Icon="Setting" Label="Settings"/>-->
-                    <AppBarButton x:Name="AboutButton" Icon="Help" Label="About" Click="AboutButton_Click"/>
-                </CommandBar.SecondaryCommands>
-                <AppBarButton x:Name="ShareButton" Label="Share URL" Click="ShareButton_Click" Icon="Send"/>
+                <AppBarButton x:Name="AboutButton" Icon="Help" Label="About" Click="AboutButton_Click"/>
+                    <AppBarButton x:Name="ShareButton" Label="Share URL" Click="ShareButton_Click" Icon="Send"/>
                 <AppBarButton x:Name="RefreshStatsButton" Icon="Refresh" Label="Refresh stats" Click="RefreshStatsButton_Click"/>
             </CommandBar>
 

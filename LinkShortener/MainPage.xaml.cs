@@ -233,7 +233,7 @@ namespace LinkShortener
             }
         }
         
-        private void ShareButton_Click(object sender, RoutedEventArgs e)
+        private async void ShareButton_Click(object sender, RoutedEventArgs e)
         {
             DataTransferManager dataTransferManager = DataTransferManager.GetForCurrentView();
             dataTransferManager.DataRequested += DataTransferManager_DataRequested;
@@ -242,7 +242,7 @@ namespace LinkShortener
             else
             {
                 MessageDialog dialog = new MessageDialog("Please shorten a link first", "Information");
-                dialog.ShowAsync();
+                await dialog.ShowAsync();
                 return;
             }
         }
