@@ -4,10 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
-    <Page.Background>
-        <SolidColorBrush Color="{ThemeResource SystemColorWindowColor}"/>
-    </Page.Background>
+    mc:Ignorable="d"
+    Background="{ThemeResource BackgroundBrush}">
+    
+
     <SplitView x:Name="MainSplitView" PanePlacement="Right" OpenPaneLength="300" DisplayMode="Overlay">
         <SplitView.Pane>
             <StackPanel>
